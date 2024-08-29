@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Чтение обработанного CSV-файла
-df = pd.read_csv('processed_file.csv')
+df = pd.read_csv('prices_cleaned.csv')
 
 # Предположим, что столбец с ценами называется 'Цена'
 price = df['Price']

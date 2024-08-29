@@ -10,13 +10,13 @@ driver = webdriver.Chrome()
 
 try:
     # Открываем страницу
-    driver.get('https://izhevsk.cian.ru/snyat-kvartiru-1-komn-ili-2-komn/')
+    driver.get('https://www.divan.ru/izhevsk/category/divany-i-kresla')
 
     # Даем странице загрузиться
     time.sleep(5)
 
     # Парсим цены
-    prices = driver.find_elements(By.CSS_SELECTOR, "div[data-name='CardPriceBlock'] span.aee5b7c44e--color_black_100--Ephi7")
+    prices = driver.find_elements("css selector", ".q5Uds.T7z9Z.fxA6s span")
 
     with open('prices.csv', mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)

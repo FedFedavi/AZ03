@@ -1,24 +1,15 @@
-import matplotlib.pyplot as plt
+import pandas as pd
 
-# x = [2, 6, 8, 14, 20]
-# y = [6, 4, 10, 12, 16]
-#
-# plt.plot(x, y)
-# plt.title('Пример простого линейного графика')
-# plt.xlabel('x ось')
-# plt.ylabel('y ось')
-#
-# plt.show()
-#
-# data = [5, 6, 7, 4, 6, 5, 7, 8, 5, 8, 9, 10, 11, 8, 9, 10, 7, 6, 5, 7, 8, 9, 10, 7, 6, 5]
-# plt.hist(data, bins=3)
+# Чтение данных из CSV файла
+df = pd.read_csv('prices.csv')
 
-x = [1, 4, 6, 7]
-y = [3, 5, 8, 10]
+# Удаление строк, содержащих только "руб."
+df = df[df['Price'] != 'руб.']
 
-plt.scatter(x, y)
+# Преобразование цен в целые числа
+df['Price'] = df['Price'].str.replace('руб.', '').str.replace(' ', '').astype(int)
 
-plt.xlabel('Ось х')
-plt.ylabel('Ось y')
-plt.title('Тестовая диаграмма рассеивания')
-plt.show()
+# Сохранение обратно в CSV файл, если необходимо
+df.to_csv('prices_cleaned.csv', index=False)
+
+print(df)
